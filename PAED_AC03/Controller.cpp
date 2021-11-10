@@ -14,7 +14,8 @@ void Controller::Run()
 	userOptionSelect userOption;
 	uint64_t result;
 	std::pair<int, int> args;
-
+	uint64_t decimal;
+	std::vector<int> arr;
 	do {
 		uiManager.showMenu();
 		userOption = uiManager.askForOption();
@@ -22,18 +23,31 @@ void Controller::Run()
 		{
 		case userOptionSelect::POTENCIA:
 			args = uiManager.askForPow();
-			result = event.potencia(args.first, args.second);
+			{
+				Crono crono;
+				result = event.potencia(args.first, args.second);
+			}
 			uiManager.showResultInt(result);
 			uiManager.newLine();
 			break;
 		case userOptionSelect::aBINARI:
-
-
+			decimal = uiManager.askForDecimal();
+			{
+				Crono crono;
+				result = event.aBinari(decimal);
+			}
+			uiManager.showResultInt(result);
+			uiManager.newLine();
 			break;
 
 		case userOptionSelect::COMPTA_IMPARELLS:
-
-
+			arr = uiManager.askForArray();
+			{
+				Crono crono;
+				result = event.comptaImparells(arr);
+			}
+			uiManager.showResultInt(result);
+			uiManager.newLine();
 			break;
 
 		case userOptionSelect::EXIT:

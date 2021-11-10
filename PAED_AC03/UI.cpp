@@ -69,6 +69,43 @@ std::pair<int, int> UI::askForPow()
 
 }
 
+int UI::askForDecimal()
+{
+    std::string decimal;
+    do
+    {
+        std::cout << "Decimal: ";
+        std::getline(std::cin, decimal);
+    } while (!atoi(decimal.c_str()));
+
+    return atoi(decimal.c_str());
+
+}
+
+std::vector<int> UI::askForArray()
+{
+    std::string size;
+    std::string value;
+    std::vector<int> buffer;
+    do
+    {
+        std::cout << "Array size: ";
+        std::getline(std::cin, size);
+    } while (!atoi(size.c_str()));
+
+    for (size_t i = 0; i < atoi(size.c_str()); i++)
+    {
+        do
+        {
+            std::cout << "Value " << i+1 << " : ";
+            std::getline(std::cin, value);
+        } while (!atoi(value.c_str()));
+        buffer.push_back(atoi(value.c_str()));
+    }
+
+    return buffer;
+}
+
 void UI::showResultInt(const uint64_t& result)
 {
     std::cout << "Result is: " << result << std::endl;
